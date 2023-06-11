@@ -1,0 +1,29 @@
+{
+  "name": "theme-switcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "link": "node -r dotenv/config ./scripts/link.js",
+    "unlink": "node -r dotenv/config ./scripts/unlink.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://stash.delta.sbrf.ru/scm/dvk/theme-switcher.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "7.0.3",
+    "dotenv": "16.1.0-rc2",
+    "eslint": "8.41.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-standard": "17.1.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-n": "16.0.0",
+    "eslint-plugin-promise": "6.1.1",
+    "prettier": "2.8.8"
+  }
+}

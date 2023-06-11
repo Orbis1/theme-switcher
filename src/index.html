@@ -1,0 +1,13 @@
+<div
+  qv-extension
+  style="height: 100%; position: relative; overflow: auto"
+  class="ng-scope"
+>
+  <select
+    name="mySelect"
+    id="mySelect"
+    ng-options="option.name for option in theme.availableOptions track by option.id"
+    ng-model="theme.selectedOption"
+    ng-change="switch(theme.selectedOption.id)"
+  ></select>
+</div>
