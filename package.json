@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "link": "node -r dotenv/config ./scripts/link.js",
-    "unlink": "node -r dotenv/config ./scripts/unlink.js"
+    "unlink": "node -r dotenv/config ./scripts/unlink.js",
+    "prepare": "husky install",
+    "test": "echo 'test'"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,19 @@
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-n": "16.0.0",
     "eslint-plugin-promise": "6.1.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "prettier": "2.8.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
