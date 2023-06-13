@@ -3,7 +3,7 @@
 	"description": "Basic empty visualization template",
 	"type": "visualization",
 	"version": "1.0.0",
-	"icon": "extension",
+	"preview": "icon.png",
 	"author": "",
 	"homepage": "",
 	"keywords": "qlik-sense, visualization",

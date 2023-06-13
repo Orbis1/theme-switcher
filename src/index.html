@@ -1,11 +1,19 @@
 <div
   qv-extension
-  style="height: 100%; position: relative; overflow: auto"
+  style="
+    height: 100%;
+    position: relative;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
   class="ng-scope"
 >
   <select
     name="mySelect"
     id="mySelect"
+    style="margin-left: auto; margin-right: auto; height: fit-content"
     ng-options="option.name for option in theme.availableOptions track by option.id"
     ng-model="theme.selectedOption"
     ng-change="switch(theme.selectedOption.id)"
