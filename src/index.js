@@ -2,7 +2,7 @@ define(['qlik', 'text!./index.html', 'angular', './utils'], function (
   qlik,
   template,
   angular,
-  setVariable,
+  utils,
 ) {
   return {
     template: template,
@@ -28,8 +28,10 @@ define(['qlik', 'text!./index.html', 'angular', './utils'], function (
 
           $scope.switch = function (themeId) {
             qlik.theme.apply(themeId).then(() => {
-              console.log(`Theme "${themeId}" applied`);
-              setVariable('themeSwitcher.currentThemeId', themeId);
+              utils
+                .setVariable('themeSwitcher.currentThemeId', themeId)
+                .then(() => console.log(`Theme "${themeId}" applied`))
+                .catch((err) => console.error(err));
             });
           };
 
