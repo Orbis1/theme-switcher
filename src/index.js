@@ -1,9 +1,12 @@
-define(['qlik', 'text!./index.html', 'angular', './utils'], function (
-  qlik,
-  template,
-  angular,
-  utils,
-) {
+define([
+  'qlik',
+  'text!./index.html',
+  'angular',
+  './utils',
+  './definition',
+  'css!./index.css',
+], function (qlik, template, angular, utils, definition) {
+  console.log('angular', angular);
   return {
     template: template,
     support: {
@@ -11,22 +14,21 @@ define(['qlik', 'text!./index.html', 'angular', './utils'], function (
       export: false,
       exportData: false,
     },
+    definition: definition.getDef(),
+
     controller: [
       '$scope',
       function ($scope) {
-        console.log('controller');
         try {
-          // scope
-          $scope.theme = {
-            // availableOptions: [
-            //   { id: '1', name: 'Option A' },
-            //   { id: '2', name: 'Option B' },
-            //   { id: '3', name: 'Option C' },
-            // ],
-            // selectedOption: { id: '3', name: 'Option C' },
-          };
+          $scope.backendApi.model.Validated.bind(() => {
+            //Listens for click events or other data model changes
+            $scope.theme.switcher.value
+              ? $scope.switch($scope.layout.theme.on)
+              : $scope.switch($scope.layout.theme.off);
+          });
 
           $scope.switch = function (themeId) {
+            if (themeId === undefined) return;
             qlik.theme.apply(themeId).then(() => {
               utils
                 .setVariable('themeSwitcher.currentThemeId', themeId)
@@ -35,20 +37,11 @@ define(['qlik', 'text!./index.html', 'angular', './utils'], function (
             });
           };
 
-          qlik.getThemeList().then((themeList) => {
-            $scope.theme.availableOptions = themeList;
+          $scope.theme = {
+            switcher: { value: false },
+          };
 
-            qlik
-              .currApp()
-              .theme.getApplied()
-              .then((currentTheme) => {
-                const selectedTheme = themeList.filter(
-                  (theme) => theme.id === currentTheme.id,
-                );
-
-                $scope.theme.selectedOption = selectedTheme[0];
-              });
-          });
+          $scope.switch($scope.layout.theme.off);
         } catch (error) {
           console.error(error);
         }
