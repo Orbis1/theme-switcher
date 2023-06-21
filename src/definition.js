@@ -35,6 +35,32 @@ define(['qlik'], function (qlik) {
                 ref: 'theme.off',
                 options: getThemes,
               },
+              text0: {
+                label: `
+                Описание расширения
+                `,
+                component: 'text',
+              },
+              text1: {
+                label: `
+                theme-switcher создаёт и обновляет 
+                переменные при каждом переключении (ON|OFF)
+                `,
+                component: 'text',
+              },
+              text2: {
+                label: `
+                themeSwitcher.currentThemeId: id выбранной в 
+                расширении темы (например sense для темы Sense Classic)
+                `,
+                component: 'text',
+              },
+              text3: {
+                label: `
+                themeSwitcher.pos: положение переключателя (1 - ON, 2 - OFF)
+                `,
+                component: 'text',
+              },
             },
           },
         },
