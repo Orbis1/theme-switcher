@@ -5,8 +5,8 @@
         id="switch-1"
         type="checkbox"
         class="switch-input"
-        ng-model="theme.switcher.value"
-        ng-change="theme.switcher.value ? switch(layout.theme.on) : switch(layout.theme.off)"
+        ng-model="currentState.isSwitched"
+        ng-change="currentState.isSwitched ? change(true) : change(false)"
       />
       <label for="switch-1" class="switch-label">Switch</label>
     </div>

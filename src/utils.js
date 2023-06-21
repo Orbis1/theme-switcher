@@ -33,5 +33,33 @@ define(['qlik'], function (qlik) {
       console.error(`Variable ${variableName} not found`);
     }
   };
-  return { setVariable, onChanged };
+
+  const getCookieValue = (name) => {
+    const value = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith(name + '='))
+      ?.split('=')[1];
+
+    return value;
+  };
+
+  const setCookie = (name, value) => {
+    document.cookie = `${name}=${value}; path=/sense/app; Secure`;
+  };
+
+  const setState = (state) => {
+    setCookie('theme.switcher.state', JSON.stringify(state));
+  };
+
+  const getState = () => {
+    const state = getCookieValue('theme.switcher.state');
+    if (state === undefined) return;
+    if (state.length > 1) {
+      return JSON.parse(state);
+    } else {
+      return;
+    }
+  };
+
+  return { setVariable, setState, getState };
 });
