@@ -4,17 +4,26 @@ define(['qlik'], function (qlik) {
     const app = qlik.currApp();
     try {
       await app.variable.getByName(variableName);
-      app.variable.setStringValue(variableName, value);
+      if (typeof value === 'number') {
+        app.variable.setNumValue(variableName, value);
+      } else {
+        app.variable.setStringValue(variableName, value);
+      }
     } catch (error) {
-      console.error(`Can't set value ${value} to variable ${variableName}`);
+      console.error(
+        `Can't set value ${value} to variable ${variableName}`,
+        error,
+      );
 
       app.variable
         .create({
           qName: variableName,
-          qDefinition: value,
+          qDefinition: value.toString(),
         })
         .then(() => console.log(`Variable ${variableName} created`))
-        .catch(() => console.error(`Can't create variable ${variableName}`));
+        .catch(() =>
+          console.error(`Can't create variable ${variableName}`, error),
+        );
     }
   };
 

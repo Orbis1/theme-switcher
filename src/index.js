@@ -80,6 +80,10 @@ define([
                 .then(() => console.log(`Theme "${themeId}" applied`))
                 .catch((err) => console.error(err));
 
+              utils
+                .setVariable('themeSwitcher.pos', isOn ? 1 : 2)
+                .catch((err) => console.error(err));
+
               $scope.currentState = {
                 ...$scope.currentState,
                 isSwitched: isOn,
