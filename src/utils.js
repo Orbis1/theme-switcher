@@ -52,8 +52,17 @@ define(['qlik'], function (qlik) {
     return value;
   };
 
+  const getEndingIndex = (str, ending) => str.indexOf(ending) + ending.length;
+
+  const getPath = (pathname) => {
+    const end = getEndingIndex(pathname, 'app');
+    return pathname.slice(0, end);
+  };
+
   const setCookie = (name, value) => {
-    document.cookie = `${name}=${value}; path=/sense/app; Secure`;
+    document.cookie = `${name}=${value}; path=${getPath(
+      window.location.pathname,
+    )}; Secure`;
   };
 
   const setState = (state) => {
