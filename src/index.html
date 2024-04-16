@@ -1,21 +1,14 @@
-<div
-  qv-extension
-  style="
-    height: 100%;
-    position: relative;
-    overflow: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  "
-  class="ng-scope"
->
-  <select
-    name="mySelect"
-    id="mySelect"
-    style="margin-left: auto; margin-right: auto; height: fit-content"
-    ng-options="option.name for option in theme.availableOptions track by option.id"
-    ng-model="theme.selectedOption"
-    ng-change="switch(theme.selectedOption.id)"
-  ></select>
+<div class="switch-wrapper">
+  <form action="#">
+    <div class="switch">
+      <input
+        id="switch-1"
+        type="checkbox"
+        class="switch-input"
+        ng-model="currentState.isSwitched"
+        ng-change="currentState.isSwitched ? change(true) : change(false)"
+      />
+      <label for="switch-1" class="switch-label">Switch</label>
+    </div>
+  </form>
 </div>

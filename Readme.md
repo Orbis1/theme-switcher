@@ -1,6 +1,6 @@
-# Main
+# Theme Switcher
 
-![Preview](./images/theme-switcher-demo.gif)
+[![ru](https://img.shields.io/badge/lang-ru-red.svg)](Readme.ru.md)
 
 # req
 
@@ -15,3 +15,9 @@ EXTENSION_PATH - path to Extension folder. For example C:\Users\USERNAME\Documen
 - npm i
 - edit .env
 - npm run link
+
+# Usage
+
+- Add theme-switcher as master item
+- Add theme-switcher (master item visualization) to all sheets
+- Do not add two or more switcher to sheet

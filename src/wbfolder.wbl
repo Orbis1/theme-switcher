@@ -1,3 +1,7 @@
-index.qext;
-index.js;
-index.html
+theme-switcher.qext;
+theme-switcher.js;
+index.html;
+index.css;
+icon.png;
+utils.js;
+definition.js
